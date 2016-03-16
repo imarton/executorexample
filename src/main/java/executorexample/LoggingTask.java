@@ -1,9 +1,12 @@
 package executorexample;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class LoggingTask implements Runnable {
     private String name;
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss"); 
     
     public LoggingTask(String name) 
     {
@@ -19,9 +22,9 @@ public class LoggingTask implements Runnable {
         try
         {
             Long sleepingTime = (long) (Math.random() * 10);
-            System.out.println(name + " is working...");
+            System.out.println(sdf.format(new Date()) +" "+ name + " is working...");
             TimeUnit.SECONDS.sleep(sleepingTime);
-            System.out.println(name + "  done!");
+            System.out.println(sdf.format(new Date()) + " "+ name + "  done!");
         } 
         catch (InterruptedException e) 
         {
